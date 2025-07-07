@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+    Author taushif.khan@jax.org
+    Version 1.0
+    Description Ollama in a GPU-ready Singularity container
+
+%post
+    apt-get update && \
+    apt-get install -y curl git unzip software-properties-common ca-certificates && \
+    curl -fsSL https://ollama.com/install.sh | bash
+
+%environment
+    export PATH="/root/.ollama/bin:$PATH"
+
+%runscript
+    echo "Starting Ollama server..."
+

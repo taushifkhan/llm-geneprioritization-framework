@@ -1,0 +1,24 @@
+#!/bin/bash --login
+
+# gpu_dev                           cpu=12,gres/gpu=1              08:00:00       
+#SBATCH --job-name="pyR_TK"
+#SBATCH -t 08:00:00
+#SBATCH --mem=150GB
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:1
+#SBATCH -q gpu_dev
+#SBATCH -p gpu_v100
+#SBATCH -e ollama.err
+#SBATCH -o ollama.out
+
+
+bindDir="/projects/activities/jaxcc/CATch-project/analysis/tkhan/images/llm/"
+notebookDir="/projects/activities/jaxcc/CATch-project/analysis/tkhan/"
+container="/projects/activities/jaxcc/CATch-project/analysis/tkhan/images/llm/onlyOllama.sif"
+model_dir="/flashscratch/tkhan/llm/.ollama/"
+
+module load singularity
+singularity exec --nv -B "${bindDir}" "${container}" bash runOllama.bash
+
+### sbatch run-jupyter-notebook.sb 
