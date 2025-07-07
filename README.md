@@ -22,6 +22,7 @@ The included Jupyter notebooks demonstrate the pipeline and analysis steps:
 - Data loading and preprocessing
 - LLM-based scoring and RAG verification
 - Visualization of results and candidate gene selection
+- Download vector index :[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15802241.svg)](https://doi.org/10.5281/zenodo.15802241)
 
 Example notebook: `3_runPipeLine.ipynb`
 

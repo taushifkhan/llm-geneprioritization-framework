@@ -45,7 +45,7 @@ if json_key_col is None:
 
 # Sidebar for page selection
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to', ['Overview', 'Gene-wise Detail'])
+page = st.sidebar.radio('Go to', ['Overview', 'Gene-wise Detail','Resources'])
 
 # Sidebar for gene and json_key selection (for detail page)
 gene_names = df[gene_col].unique()
@@ -332,3 +332,21 @@ elif page == 'Gene-wise Detail':
                 st.write('rag_noderetrived is not a list')
         else:
             st.write('No data found for this gene and key.')
+
+elif page == 'Resources':
+    st.title('Resources')
+    st.markdown('''
+    ## Get the Index vector database from Zenodo
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15802241.svg)](https://doi.org/10.5281/zenodo.15802241)
+
+    ## Set up query using notebook
+    - You can use the notebook `3_runPipeLine.ipynb` to set up the query for the RAG evaluation pipeline. This notebook provides a step-by-step guide on how to
+    configure and run the RAG evaluation pipeline using the pre-built vector database.
+
+    ## see repo for more details
+    - For more details on the methodology and implementation, please refer to the [GitHub repository](https://github.com/taushifkhan/llm-geneprioritization-framework).
+    - The repository contains the code, data, and documentation for the RAG evaluation pipeline and the candidate gene selection workflow.
+    ## Contact
+    - For any questions or issues, please contact the authors via the GitHub repository or email us at [taushifkhan](mailto:taushifkhan@jax.org).
+    ''')
+
